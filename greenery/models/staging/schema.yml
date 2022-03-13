@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: addresses
+    description: "This table consists addresses of all users in the Users table "
+    columns:
+      - name: address_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: products
+    description: "This table consists all unique products available for users to buy along with their price and inventory information"
+    columns:
+      - name: product_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: promos
+    description: "This table consists of all active and inactive promotions with their associated discounts "
+    columns:
+      - name: promo_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: orders
+    description: "This table consists all orders and their details of all users"
+    columns:
+      - name: order_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: order_items
+    description: "This is a cross reference table that ties product and order details. "
+    columns:
+      - name: order_id
+        description: "This is part of the composite key with product_id that drives uniqueness"
+        tests:
+          - not_null
+      - name: product_id
+        description: "This is part of the composite key with order_id that drives uniqueness"
+        tests:
+          - not_null
+
+  - name: events
+    description: "This table tracks all the unique user sessions and their activities"
+    columns:
+      - name: event_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: users
+    description: "This table consists list of all unique users who have registered with greenery "
+    columns:
+      - name: user_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
