@@ -1,7 +1,9 @@
 Answers to Week 1 Questions below:
 
 
-How many users do we have?  Answer: 130
+How many users do we have?  
+Answer: 130
+    
     select count(user_id) 
         from "dbt_kishore_A"."users"
 
