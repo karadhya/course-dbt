@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "This table consists all unique products available for users to buy along with their price and inventory information"
+    columns:
+      - name: product_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_promos
+    description: "This table consists of all active and inactive promotions with their associated discounts "
+    columns:
+      - name: promo_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_orders
+    description: "This table consists all orders and their details of all users"
+    columns:
+      - name: fct_order_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_page_views
+    description: "This table tracks all the unique user sessions and their activities"
+    columns:
+      - name: event_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_users
+    description: "This table consists list of all unique users who have registered with greenery "
+    columns:
+      - name: user_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: user_order_facts
+    description: "This table consists all the users and orders information modeled after a fact table "
+    columns:
+      - name: user_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: tracking_id
+        description: "This field should be unique and NOT NULL"
+        tests:
+          - unique
+          - not_null          
