@@ -69,8 +69,8 @@ models:
 
   - name: total_product_page_views
     description: "This table consists list of all unique page views by different products by different users with greenery "
-    columns:
+
 
   - name: total_products_purchased
     description: "This table contains purchase counts by product with greenery "
-    columns:    
+   

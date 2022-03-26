@@ -13,7 +13,8 @@ with event_checkout AS (
                           created_at,
                           event_type,
                           order_id
-                      FROM {{ source('greenery', 'events') }} where event_type='checkout'), event_checkout_product AS (
+                          from {{ source('greenery', 'events') }} where event_type='checkout'
+                          ), event_checkout_product AS (
                       select                    
                           ev.event_id,
                           ev.session_id,
