@@ -9,15 +9,20 @@ models:
         tests:
           - unique
           - not_null
+          - dbt_expectations.expect_column_to_exist
 
   - name: products
     description: "This table consists all unique products available for users to buy along with their price and inventory information"
+    tests:
+    - dbt_expectations.expect_table_row_count_to_equal:  
+        value: 30    
     columns:
       - name: product_id
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
+          - dbt_expectations.expect_column_to_exist 
 
   - name: promos
     description: "This table consists of all active and inactive promotions with their associated discounts "
@@ -74,9 +79,16 @@ models:
     description: "This table contains purchase counts by product with greenery "
 
 macros:
-  - name: aggregate_events
+  - name: grant_table
     description: "Outputs aggregations by event types for a particular session id."
     arguments:
-      - name: in_session_id
+      - name: role
         type: string
-        description: "Pass a specific session id"
+        description: "Pass the group role that the grant request needs to be applied for all the tables in the schema"
+
+  - name: grant_schema
+    description: "Outputs aggregations by event types for a particular session id."
+    arguments:
+      - name: role
+        type: string
+        description: "Pass the group role that the grant request needs to be applied to the schema"
