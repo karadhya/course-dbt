@@ -70,7 +70,13 @@ models:
   - name: total_product_page_views
     description: "This table consists list of all unique page views by different products by different users with greenery "
 
-
   - name: total_products_purchased
     description: "This table contains purchase counts by product with greenery "
-   
+
+macros:
+  - name: aggregate_events
+    description: "Outputs aggregations by event types for a particular session id."
+    arguments:
+      - name: in_session_id
+        type: string
+        description: "Pass a specific session id"
